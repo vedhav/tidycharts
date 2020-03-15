@@ -1,0 +1,92 @@
+---
+  output: github_document
+  always_allow_html: true
+---
+
+# Installation
+
+  ```{r installation, eval=FALSE}
+devtools::install_github("vedhav/tidycharts")
+```
+
+# What is tidycharts?
+
+We all love the tidyverse and it's package due to its ease of use but I like most of us have struggled with building an interactive plot, I always turn to plotly documentation so much so that almost half of the plotly website links are dark blue for me. It's frustrating when something simple is very easy to forget. This could potentially go away if we had some sort of function that feels like using tidyverse so I've created few graphs that I create often. Tidycharts is basically a wrapper package for plotly with tidy syntax!
+
+# Scatter plots
+
+Pretty scatter plots are one of the most plotted graph ever (no data to prove my hypothesis, just a hunch!). So I've decided to start with scatter plots and work my way up to more complex charts.
+
+```{r}
+library(tidycharts)
+data("tidychartsdata") # This will load marks_data and gender_school_earnings to your environment
+marks_data
+gender_school_earnings
+```
+
+Loading the tidycharts will also load dplyr and plotly
+
+
+## Dumbbell chart
+
+You might think that building an interactive dumbbell chart might need you to write a lot of code, don't worry the `dumbbell_chart` function is very concice and also powerful. Let look at some examples.
+
+```{r}
+# You can plot a dumbbell chart using by just specifying data, x1_name, x2_name and y_name.
+dumbbell_chart(gender_school_earnings, Men, Women, School)
+
+# If you want to specify particular color, you can specify them to their respective arguments
+dumbbell_chart(gender_school_earnings, Men, Women, School, line_color = "#6ba1e8", x1_color = "#4c7ced", x2_color = "#a7d1eb")
+```
+
+
+Yeah that's right all you need is to pass the data and the column names to that function to create an amazing fumbbell chart. Spoiler aleart almost all the other graphs are gonna be this simple to implement.
+
+
+## Lollipop chart
+But sometimes you'd just want to compare a single factor variable with a numeric variable, lollipop charts might be the way to visualize them. 
+
+```{r}
+# This will load two data.frames `marks_data` and `gender_school_earnings`
+data(tidychartsdata)
+
+# You can plot a lollipop chart using by just specifying data, x_name and y_name.
+lollipop_chart(gender_school_earnings, Men, School)
+
+# If you want to specify particular color, you can specify them to their respective arguments
+lollipop_chart(gender_school_earnings, Men, School, line_color = "#afdeb5", x_color = "#4dbd5b")
+```
+
+
+
+## Factor scatter plot
+
+Many times a scatter plot with y-axis as a factor variable would give you better understanding of the relationship between it's levels and a numeric vector, You'd also benifit from plotting another factor variable as color. Let's have a look at an example.
+
+```{r}
+# You can plot by just using a data.frame, x-axis and y-axis.
+factor_scatter_chart(marks_data, marks, name)
+
+# You can also change the color of the plot by specifying `static_color`
+factor_scatter_chart(marks_data, marks, name, static_color = "#705bf5")
+
+# You can pass a third variable to get a plot with the color axis
+factor_scatter_chart(marks_data, marks, name, subject)
+```
+
+
+## Numeric scatter plot
+
+This is probably the most used method to visualize two numeric variables, since you'd see the correlation between those two variables right away. It would also be a great benifit if we add another color vatiable.
+
+```{r}
+# You can plot by just using a data.frame, x-axis and y-axis.
+numeric_scatter_chart(iris, Sepal.Length, Petal.Length)
+
+# You can also change the color of the plot by specifying `static_color`
+numeric_scatter_chart(iris, Sepal.Length, Petal.Length, static_color = "#f55b96")
+
+# You can pass a third variable to get a plot with the color axis
+numeric_scatter_chart(iris, Sepal.Length, Petal.Length, color_name = Species)
+```
+
