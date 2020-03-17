@@ -9,7 +9,8 @@ Description: The objective of this package is to allow people to create interact
 Depends:
     R (>= 3.3),
     plotly,
-    dplyr
+    dplyr,
+    colorspace
 Imports:
     rlang,
     magrittr
