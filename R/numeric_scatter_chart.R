@@ -1,32 +1,36 @@
+#' Factor scatter chart
+#'
 #' Use this function to create scatter plot with both x-axis and y-axis containing numeric variables
 #' and with an optional color variable which is a factor variable
 #'
-#' @param  data.frame  plot_data        This is the data.frame which will be used for the plot
-#' @param  Column      x_name           The column name of the variable in the x-axis, It has to be a numeric variable
-#' @param  Column      y_name           The column name of the variable in the y-axis, It has to be a numeric variable
-#' @param  Column      color_name       The column name of the variable in the color axis, It has to be a factor variable
-#' @param  string      static_color     If the colour_name is not specified, this color will be filled for the plot
-#' @param  Column      hover_name       The column name of the variable that will be present in the hovers, can also be a normal vector.
-#' @param  num         plot_height      The height of the plot, If not provided the plot will take the whole area available in the UI
-#' @param  num         plot_width       The height of the plot, If not provided the plot will take the whole area available in the UI
-#' @param  boolean     show_legend      This will let you display or hide the grids in the x-axis, default shown
-#' @param  boolean     show_x_axis_grid This will let you display or hide the grids in the x-axis, default hidden
-#' @param  boolean     show_y_axis_grid This will let you display or hide the grids in the y-axis, default hidden
-#' @param  num         marker_size      This is the size of the markers in the scatter plot, defaults to marker_default_size from constants.R
-#' @param  string      plot_title       This is the title of the plot, defauts to NULL
-#' @param  string      x_axis_title     This is the x-axis title of the plot, defaults to NULL
-#' @param  string      y_axis_title     This is the y-axis title of the plot, defaults to NULL
-#' @return plot                         The plotly plot object as plot which can be viewed in HTML
+#' @author Vedha Viyash
+#'
+#' @param  plot_data         This is the data.frame which will be used for the plot
+#' @param  x_name            The column name of the variable in the x-axis, It has to be a numeric variable
+#' @param  y_name            The column name of the variable in the y-axis, It has to be a numeric variable
+#' @param  color_name        The column name of the variable in the color axis, It has to be a factor variable
+#' @param  static_color      string. If the colour_name is not specified, this color will be filled for the plot
+#' @param  hover_name        The column name of the variable that will be present in the hovers, can also be a normal vector.
+#' @param  plot_height       num. The height of the plot, If not provided the plot will take the whole area available in the UI
+#' @param  plot_width        num. The height of the plot, If not provided the plot will take the whole area available in the UI
+#' @param  show_legend       boolean. This will let you display or hide the grids in the x-axis, default shown
+#' @param  show_x_axis_grid  boolean. This will let you display or hide the grids in the x-axis, default hidden
+#' @param  show_y_axis_grid  boolean. This will let you display or hide the grids in the y-axis, default hidden
+#' @param  marker_size       num. This is the size of the markers in the scatter plot, defaults to marker_default_size from constants.R
+#' @param  plot_title        string. This is the title of the plot, defauts to NULL
+#' @param  x_axis_title      string. This is the x-axis title of the plot, defaults to NULL
+#' @param  y_axis_title      string. This is the y-axis title of the plot, defaults to NULL
+#' @return                   Returns a plotly plot object which can be rendered as HTML
 #'
 #' @examples
 #'
-#' You can plot by just using a data.frame, x-axis and y-axis.
+#' ## You can plot by just using a data.frame, x-axis and y-axis.
 #' numeric_scatter_chart(iris, Sepal.Length, Petal.Length)
 #'
-#' You can also change the color of the plot by specifying `static_color`
+#' ## You can also change the color of the plot by specifying `static_color`
 #' numeric_scatter_chart(iris, Sepal.Length, Petal.Length, static_color = "#f55b96")
 #'
-#' You can pass a third variable to get a plot with the color axis
+#' ## You can pass a third variable to get a plot with the color axis
 #' numeric_scatter_chart(iris, Sepal.Length, Petal.Length, color_name = Species)
 #'
 #' @import plotly
@@ -39,8 +43,8 @@ numeric_scatter_chart <- function(plot_data, x_name, y_name, color_name = NULL, 
                                   x_axis_title = NULL, y_axis_title = NULL) {
   x_name <- rlang::enquo(x_name)
   x_value <- plot_data[[rlang::quo_name(x_name)]]
-  x_min <- min(x_value) - sd(x_value)/2
-  x_max <- max(x_value) + sd(x_value)/2
+  x_min <- min(x_value) - stats::sd(x_value)/2
+  x_max <- max(x_value) + stats::sd(x_value)/2
   y_name <- rlang::enquo(y_name)
   y_value <- plot_data[[rlang::quo_name(y_name)]]
   color_name <- rlang::enquo(color_name)

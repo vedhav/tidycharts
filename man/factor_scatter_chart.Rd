@@ -2,8 +2,7 @@
 % Please edit documentation in R/factor_scatter_chart.R
 \name{factor_scatter_chart}
 \alias{factor_scatter_chart}
-\title{Use this function to create chart with a factor variable in y-axis,
-a numeric variable in x-axis and an optional color variable}
+\title{Factor scatter chart}
 \usage{
 factor_scatter_chart(
   plot_data,
@@ -26,20 +25,42 @@ factor_scatter_chart(
 )
 }
 \arguments{
-\item{data.frame}{plot_data        This is the data.frame which will be used for the plot}
+\item{plot_data}{The data which will be used for the plot}
 
-\item{char_vactor}{highlight        A vector of values from y_name which will be highlighted. Optional, if not provided every y-axis variable will have same color}
+\item{x_name}{The column name of the variable in the x-axis, It has to be a numeric variable}
 
-\item{Column}{hover_name       The column name of the variable that will be present in the hovers, can also be a normal vector.}
+\item{y_name}{The column name of the variable in the y-axis, It has to be a factor variable}
 
-\item{boolean}{show_y_axis_grid This will let you display or hide the grids in the y-axis, default shown}
+\item{color_name}{The column name of the variable in the color axis, It has to be a factor variable}
 
-\item{num}{y_text_wrap      This will break the y-axis text by the number of characters specified, defaults to 60 characters}
+\item{static_color}{string. If the colour_name is not specified, this color will be filled for the plot}
 
-\item{string}{y_axis_title     This is the y-axis title of the plot, defaults to NULL}
+\item{highlight}{char_vactor. A vector of values from y_name which will be highlighted. Optional, if not provided every y-axis variable will have same color}
+
+\item{hover_name}{The column name of the variable that will be present in the hovers, You can also pass a normal vector.}
+
+\item{plot_height}{num. The height of the plot, If not provided the plot will take the whole area available in the UI}
+
+\item{plot_width}{num. The height of the plot, If not provided the plot will take the whole area available in the UI}
+
+\item{show_legend}{boolean. This will let you display or hide the grids in the x-axis, default shown}
+
+\item{show_x_axis_grid}{boolean. This will let you display or hide the grids in the x-axis, default hidden}
+
+\item{show_y_axis_grid}{boolean. This will let you display or hide the grids in the y-axis, default shown}
+
+\item{marker_size}{num. This is the size of the markers in the scatter plot, defaults to marker_default_size from constants.R}
+
+\item{y_text_wrap}{num. This will break the y-axis text by the number of characters specified, defaults to 60 characters}
+
+\item{plot_title}{string. This is the title of the plot, defauts to NULL}
+
+\item{x_axis_title}{string. This is the x-axis title of the plot, defaults to NULL}
+
+\item{y_axis_title}{string. This is the y-axis title of the plot, defaults to NULL}
 }
 \value{
-plot                         The plotly plot object as plot which can be viewed in HTML
+Returns a plotly plot object which can be rendered as HTML
 }
 \description{
 Use this function to create chart with a factor variable in y-axis,
@@ -47,16 +68,19 @@ a numeric variable in x-axis and an optional color variable
 }
 \examples{
 
-This will load two data.frames `marks_data` and `gender_school_earnings`
+## This will load two data.frames `marks_data` and `gender_school_earnings`
 data("tidychartsdata")
 
-You can plot by just using a data.frame, x-axis and y-axis.
+## You can plot by just using a data.frame, x-axis and y-axis.
 factor_scatter_chart(marks_data, marks, name)
 
-You can also change the color of the plot by specifying `static_color`
+## You can also change the color of the plot by specifying `static_color`
 factor_scatter_chart(marks_data, marks, name, static_color = "#705bf5")
 
-You can pass a third variable to get a plot with the color axis
+## You can pass a third variable to get a plot with the color axis
 factor_scatter_chart(marks_data, marks, name, subject)
 
+}
+\author{
+Vedha Viyash
 }

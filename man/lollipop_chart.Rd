@@ -2,7 +2,7 @@
 % Please edit documentation in R/lollipop_chart.R
 \name{lollipop_chart}
 \alias{lollipop_chart}
-\title{Use this function to create a lollipop chart to compare a numeric variables with a factor variable}
+\title{Lollipop Chart}
 \usage{
 lollipop_chart(
   plot_data,
@@ -22,31 +22,52 @@ lollipop_chart(
 )
 }
 \arguments{
-\item{data.frame}{plot_data        This is the data.frame which will be used for the plot}
+\item{plot_data}{This is the data.frame which will be used for the plot}
 
-\item{Column}{y_name           The column name of the the variable in the y-axis, It has to be a factor variable}
+\item{x_name}{The column name of one of the the variable in the x-axis, It has to be a numeric variable}
 
-\item{boolean}{show_y_axis_grid This will let you display or hide the grids in the y-axis, default hidden}
+\item{y_name}{The column name of the the variable in the y-axis, It has to be a factor variable}
 
-\item{num}{marker_size      This is the size of the markers in the scatter plot, defaults to marker_default_size from constants.R}
+\item{line_color}{string. This is the color of the line between the two points, defaults to a grey shade}
 
-\item{string}{y_axis_title     This is the y-axis title of the plot, defaults to NULL}
+\item{x_color}{string. This is the color of the point made by x_name variable, defaults to a bluish color}
+
+\item{plot_height}{num. The height of the plot, If not provided the plot will take the whole area available in the UI}
+
+\item{plot_width}{num. The height of the plot, If not provided the plot will take the whole area available in the UI}
+
+\item{show_legend}{boolean. This will let you display or hide the grids in the x-axis, default hidden}
+
+\item{show_x_axis_grid}{boolean. This will let you display or hide the grids in the x-axis, default hidden}
+
+\item{show_y_axis_grid}{boolean. This will let you display or hide the grids in the y-axis, default hidden}
+
+\item{marker_size}{num. This is the size of the markers in the scatter plot, defaults to marker_default_size from constants.R}
+
+\item{plot_title}{string. This is the title of the plot, defauts to NULL}
+
+\item{x_axis_title}{string. This is the x-axis title of the plot, defaults to NULL}
+
+\item{y_axis_title}{string. This is the y-axis title of the plot, defaults to NULL}
 }
 \value{
-plot                         The plotly plot object as plot which can be viewed in HTML
+Returns a plotly plot object which can be rendered as HTML
 }
 \description{
 Use this function to create a lollipop chart to compare a numeric variables with a factor variable
 }
 \examples{
 
-This will load two data.frames `marks_data` and `gender_school_earnings`
+## This will load two data.frames `marks_data` and `gender_school_earnings`
 data("tidychartsdata")
 
-You can plot a lollipop chart using by just specifying data, x_name and y_name.
+## You can plot a lollipop chart using by just specifying data, x_name and y_name.
 lollipop_chart(gender_school_earnings, Men, School)
 
-If you want to specify particular color, you can specify them to their respective arguments
+## If you want to specify particular color, you can specify them to their respective arguments
 lollipop_chart(gender_school_earnings, Men, School, line_color = "#afdeb5", x_color = "#4dbd5b")
 
+}
+\author{
+Vedha Viyash
 }

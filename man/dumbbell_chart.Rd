@@ -2,7 +2,7 @@
 % Please edit documentation in R/dumbbell_chart.R
 \name{dumbbell_chart}
 \alias{dumbbell_chart}
-\title{Use this function to create a dumbbell chart to compare two numeric variables along a factor variable}
+\title{Dumbbell Chart}
 \usage{
 dumbbell_chart(
   plot_data,
@@ -24,31 +24,59 @@ dumbbell_chart(
 )
 }
 \arguments{
-\item{data.frame}{plot_data        This is the data.frame which will be used for the plot}
+\item{plot_data}{The data which will be used for the plot}
 
-\item{Column}{y_name           The column name of the the variable in the y-axis, It has to be a factor variable}
+\item{x1_name}{The column name of one of the the variable in the x-axis, It has to be a numeric variable}
 
-\item{boolean}{show_y_axis_grid This will let you display or hide the grids in the y-axis, default hidden}
+\item{x2_name}{The column name of the other variable in the x-axis, It has to be a numeric variable}
 
-\item{num}{marker_size      This is the size of the markers in the scatter plot, defaults to marker_default_size from constants.R}
+\item{y_name}{The column name of the the variable in the y-axis, It has to be a factor variable}
 
-\item{string}{y_axis_title     This is the y-axis title of the plot, defaults to NULL}
+\item{line_color}{string. This is the color of the line between the two points, defaults to a grey shade}
+
+\item{x1_color}{string. This is the color of the point made by x1_name variable, defaults to a bluish color}
+
+\item{x2_color}{string. This is the color of the point made by x2_name variable, defaults to a version of lime green}
+
+\item{plot_height}{num. The height of the plot, If not provided the plot will take the whole area available in the UI}
+
+\item{plot_width}{num. The height of the plot, If not provided the plot will take the whole area available in the UI}
+
+\item{show_legend}{boolean. This will let you display or hide the grids in the x-axis, default shown}
+
+\item{show_x_axis_grid}{boolean. This will let you display or hide the grids in the x-axis, default hidden}
+
+\item{show_y_axis_grid}{boolean. This will let you display or hide the grids in the y-axis, default hidden}
+
+\item{marker_size}{num. This is the size of the markers in the scatter plot, defaults to marker_default_size from constants.R}
+
+\item{plot_title}{string. This is the title of the plot, defauts to NULL}
+
+\item{x_axis_title}{string. This is the x-axis title of the plot, defaults to NULL}
+
+\item{y_axis_title}{string. This is the y-axis title of the plot, defaults to NULL}
 }
 \value{
-plot                         The plotly plot object as plot which can be viewed in HTML
+Returns a plotly plot object which can be rendered as HTML
 }
 \description{
 Use this function to create a dumbbell chart to compare two numeric variables along a factor variable
 }
 \examples{
 
-This will load two data.frames `marks_data` and `gender_school_earnings`
+## This will load two data.frames `marks_data` and `gender_school_earnings`
 data("tidychartsdata")
 
-You can plot a dumbbell chart using by just specifying data, x1_name, x2_name and y_name.
+## You can plot a dumbbell chart using by just specifying data, x1_name, x2_name and y_name.
 dumbbell_chart(gender_school_earnings, Men, Women, School)
 
-If you want to specify particular color, you can specify them to their respective arguments
-dumbbell_chart(gender_school_earnings, Men, Women, School, line_color = "#6ba1e8", x1_color = "#4c7ced", x2_color = "#a7d1eb")
+## If you want to specify particular color, you can specify them to their respective arguments
+dumbbell_chart(
+  gender_school_earnings, Men, Women, School,
+  line_color = "#6ba1e8", x1_color = "#4c7ced", x2_color = "#a7d1eb"
+)
 
+}
+\author{
+Vedha Viyash
 }
