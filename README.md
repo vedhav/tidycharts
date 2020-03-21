@@ -3,6 +3,8 @@ tidycharts
 
 [![Travis build
 status](https://travis-ci.com/vedhav/tidycharts.svg?branch=master)](https://travis-ci.com/vedhav/tidycharts)
+[![AppVeyor build
+status](https://ci.appveyor.com/api/projects/status/github/vedhav/tidycharts?branch=master&svg=true)](https://ci.appveyor.com/project/vedhav/tidycharts)
 
 # Installation
 
