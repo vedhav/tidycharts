@@ -10,5 +10,5 @@ os:
 
 r:
   - 3.5
+  - oldrel
   - release
-  - devel
