@@ -1,3 +1,8 @@
+tidycharts
+================
+
+[![Travis build
+status](https://travis-ci.com/vedhav/tidycharts.svg?branch=master)](https://travis-ci.com/vedhav/tidycharts)
 
 # Installation
 
@@ -22,4 +27,12 @@ Pretty scatter plots are one of the most plotted graph ever (no data to
 prove my hypothesis, just a hunch\!). So I’ve decided to start with
 scatter plots and work my way up to more complex charts.
 
-For some examples of graphs visit here: https://vedha.space/shiny/tidycharts_examples/
+# Bar charts
+
+Another effective chart for data visualization is the bar chart. I’ve
+always wanted a single function to plot bar chart, horizontal bar chart,
+grouped bar chart and stacked bar chart. The tidychart’s bar\_chart()
+can do all of those\!
+
+For examples visit here:
+<https://vedha.space/shiny/tidycharts_examples/>
