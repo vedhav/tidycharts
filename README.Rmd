@@ -25,4 +25,4 @@ Pretty scatter plots are one of the most plotted graph ever (no data to prove my
 
 Another effective chart for data visualization is the bar chart. I've always wanted a single function to plot bar chart, horizontal bar chart, grouped bar chart and stacked bar chart. The tidychart's bar_chart() can do all of those!
 
-For examples visit here: https://vedha.space/shiny/tidycharts_examples/
+For examples visit here: https://vedha.tech/tidycharts_examples/
